@@ -1,3 +1,5 @@
+
+
 # Javascript-WebAPIs
 
 > 操作页面元素做出各种好玩的效果。使用js去操作页面文档和浏览器
@@ -71,5 +73,70 @@ box.innerText = '迪丽热巴'
 //删
 box.innerText = ''
 //对象.innerHTML 能解析标签，标签会生效
+```
+
+### 操作元素常用的属性
+
+还可以通过DOM操作元素属性，比如通过更换src更换的图片地址。比如href、title、src等等
+
+语法：
+
+```javascript
+对象.属性 = 值
+```
+
+### 操作元素样式属性
+
+实现轮播图小圆点自动更换颜色的效果，滚动图片的效果
+
+通过style属性操作css
+
+```javascript
+//语法 对象.style.样式属性 = 值
+const box = document.querySelector('.box')
+box.style.width = '200px'
+box.style.backgroundColor = 'pink'
+```
+
+通过类名操作元素样式：如果修改样式比较多，直接用style属性修改很繁琐，我们可以借助于css类名形式
+
+```javascript
+//active 是一个类名
+对象.className = 'active'
+利用类名添加属性，新的类名会覆盖原来的类名
+```
+
+通过classList操作元素样式：解决上一个方法会覆盖类名的情况，我们可以通过classList方式追加何删除类名
+
+语法：
+
+```javascript
+//新增一个类名
+对象.classList.add('类名')
+//移除一个类名
+对象.classList.remove('类名')
+//切换一个类名
+对象.classList.toggle('类名')
+这些类名前不用额外加'.'
+```
+
+操作表单元素属性：可以点击眼睛看到密码，将表单类型转换成文本框
+
+```javascript
+获取：DOM对象.属性
+设置：DOM对象.属性 = 新值
+表单.value = '用户名'
+表单.type = 'password'
+```
+
+### 自定义属性
+
+标签天生自带属性，在h5中推出了专门的data-自定义属性，通过自定义属性存储数据，后期使用这个数据进行操作
+
+```javascript
+在标签上一律以data-开头
+获取时一律以dataset对象的方式获取
+data-id="10"
+box.dataset.id //获取
 ```
 
