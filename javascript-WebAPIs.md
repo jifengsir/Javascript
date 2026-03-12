@@ -208,3 +208,4 @@ btn.addEventListener('click', function() {
 | 键盘事件 | keydown 键盘按下            | keyup键盘抬起       |                     |
 | 文本时间 | input 表单value被修改时触发 |                     |                     |
 
+对象.click()方法是程序可以模拟用户点击事件，自动执行
