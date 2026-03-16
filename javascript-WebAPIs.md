@@ -1,5 +1,3 @@
-
-
 # Javascript-WebAPIs
 
 > 操作页面元素做出各种好玩的效果。使用js去操作页面文档和浏览器
@@ -320,3 +318,81 @@ DOM.addEventListener(事件类型,事件处理函数,是否使用捕获机制)
 事件对象.preventDefault()
 ```
 
+### 移除事件监听
+
+移除事件处理函数也称为解绑事件
+
+```javascript
+//使用addEventListener方式注册，必须使用
+removeRventListener(事件类型，事件处理函数，[捕获或者冒泡阶段]) //进行解绑，匿名函数无法解绑
+//这是移除L2事件监听
+
+//移除L0事件监听
+on事件方式，直接使用null覆盖偶就可以实现事件的解绑
+```
+
+## 页面加载事件
+
+加载外部资源（如图片、外联css和javascript等）加载完毕时触发的事件
+
+事件名：load           给window添加load事件
+
+```javascript
+window.addEventListener('load', function() {
+  //执行的操作
+})
+```
+
+当初始的HTML文档被完全加载和解析之后就触发，而无需等待样式表、图像等完全加载
+
+事件名：DOMContentLoaded
+
+```javascript
+document.addEventListener('DOMContentLoaded',function() {
+  //执行的操作
+})
+```
+
+## 页面滚动事件
+
+滚动条在滚动时候持续触发事件，可以实现固定导航栏的效果和搜索框的固定。
+
+事件名：scroll
+
+```javascript
+//页面滚动事件
+window.addEventListener('scroll',function() {
+  //执行的操作
+})
+```
+
+document.documentElement.scrollTop 来获取页面向下滚动的距离
+
+## 页面尺寸事件
+
+会在窗口尺寸改变的时候触发事件：
+
+resize
+
+ ```javascript
+window.addEventListener('resize',function() {
+  //执行了代码
+})
+ ```
+
+## 元素的尺寸和位置
+
+获得元素的尺寸大小和页面中的位置
+
+使用场景：
+
+- 可以通过js方式，得到元素在页面中的位置
+- 可以通过js方式得到元素的实际大小
+
+offset家族：
+
+| 大小                                                         | 位置                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| offsetWidth和offsetHeight 获取元素自身的狂高、包括元素自身设置的宽高，返回的数字不带单位而且是制只读属性。 | offsetLeft和offsetTop ，获取元素距离自己定位父级元素的左、上距离，跟绝对定位类似。返回的是数字不带单位，并且是只读属性。 |
+
+ 
