@@ -519,3 +519,90 @@ touch对象代表一个触摸点，触摸点可能是一根手指，也可能是
 4. 应用到实际开发中
 
 网站：是swiper.com.cn
+
+## BOM操作（本地存储）
+
+浏览器对象模型，定义了一套操作浏览器窗口的API。window对象是一个全局对象，也可以说是js中的顶级对象。
+
+### 定时器-延迟函数
+
+js内置了一个用来让代码**延迟执行**的函数，交setTimeout
+
+语法：
+
+```javascript
+setTimeout(回调函数，等待的毫秒数)
+//仅仅执行一次，把一段代码延迟执行
+```
+
+清除延时函数：
+
+```javascript
+let timer = setTimeout(回调函数，等待的毫秒数)
+clearTimeout(timer)
+```
+
+### location对象
+
+location地址它拆分并保存了URL地址的各个组成部分，它是一个对象
+
+常见的属性和方法：
+
+| 属性/方法 |                        说明                        |
+| :-------: | :------------------------------------------------: |
+|   herf    |   属性，获取完整的URL地址，赋值时用于地址的跳转    |
+|  search   |     属性，获取地址中携带的参数，符号?后面部分      |
+|   hash    |      属性，获取地址中的哈希值，符号#后面部分       |
+| reload()  | 方法，用来刷新当前页面，传入参数true时表示强制刷新 |
+
+### navigator对象
+
+记录浏览器自身的相关信息，通过userAgent检测浏览器的版本和平台
+
+### history对象
+
+主要管理历史记录，该对象和浏览器地址栏的操作相对应，如前进、后退等。在一些办公场景中会比较常见。
+
+常见方法：
+
+| history对象方法 |                            作用                             |
+| :-------------: | :---------------------------------------------------------: |
+|     back()      |                        可以后退功能                         |
+|    forward()    |                          前进功能                           |
+|    go(参数)     | 前进后退功能，参数如果是1前进一个页面，如果是-1后退一个页面 |
+
+### 本地存储
+
+可以将数据存储在本地浏览器钟。（存储的都是字符串）
+
+好处：
+
+- 页面刷新或者关闭不丢失数据，实现数据持久化
+- 容量较大，sessionStorage和localStorage约5M左右
+
+```javascript
+//存储数据
+localStorage.setItem(key,value)
+//读取数据
+localStorage.getItem(key)
+//删除数据
+localStorage.removeItem(key)
+```
+
+### localStorage存储复杂数据类型
+
+本地只能存储字符串，无法存储复杂数据类型
+
+解决方案：对象-JSON。stringify（对象）-本地存储-JSON.PARSE（JSON字符串）-对象
+
+存储为JSON字符串然后再读取对象
+
+```javascript
+const goods = {
+  name: '小米10' ,
+  price: 1999
+}
+localStorage.setItem('goods', JSON.stringify(goods)) //把对象转换成JSON字符串
+console.log(JSON.parse(localStorasge.getItem('goods')))
+```
+
