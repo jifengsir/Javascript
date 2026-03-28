@@ -53,3 +53,121 @@ var age = 18
 ## 函数提升
 
 函数提升和变量提升比较类似，函数提升提升到当前作用域的最前面，之提升生命，不提升调用，函数表达式不存在提升的现象。
+
+### 函数参数
+
+函数参数的使用细节，能够提升函数应用的灵活度。
+
+1.arguments对象
+
+是函数内部内置的对象（伪数组），它包含了调用函数时传入的所有实参
+
+使用场景：
+
+写一个求和函数，不管多少实参都可以求结果。问题是形参怎么写？
+
+```javascript
+//arguments获取对象的所有实参
+function sum() {
+  let sum = 0
+  for(let i =0; i < arguments.length; i++) {
+    sum += arguments[i]
+  }
+  console.log(sum)
+}
+```
+
+### 剩余参数
+
+允许我们将一个不定数量的参数表示为一个数组
+
+简单理解：用于获取多余的实参，并形成一个真数组
+
+使用场景：解决形参和实参个数不匹配的问题
+
+```javascript
+function (x, y, ...other) {
+  console.log(x, y, other)
+}
+```
+
+other可以获取多余的实参
+
+## 展开运算符
+
+展开运算符（...）将一个数组/对象进行展开
+
+语法：不会修改原数组
+
+```javascript
+const arr = [1, 5, 3, 8, 2]
+console.log(...arr) //1 5 3 8 2
+```
+
+## 箭头函数
+
+箭头函数更适用于那些本来需要匿名函数的地方，写法更简单
+
+```javascript
+//普通函数
+const fn = function() {
+  console.log('我是普通函数')
+}
+fn()
+//箭头函数
+const fn = () => {
+  console.log('俺是箭头函数')
+}
+fn()
+//只有一个参数的时候可以省略小括号 如果返回的是一个对象，则需要用小括号把对象包裹起来
+//箭头函数里面没有arguments，但是有剩余函数
+//箭头函数中this指向的是上一层的作用域
+```
+
+## ES6中对象属性和方法的简写
+
+1.在对象中，如果属性名和属性值一致，可以简写只写属性名即可
+
+```javascript
+const uname = 'andy'
+const age = 18
+const obj = {
+  uname,
+  age
+}
+console.log(obj)
+```
+
+2.在对象中，方法函数可以简写
+
+```javascript
+const obj = {
+  sayHi() {
+    console.log('hi~~')
+  }
+}
+console.log(obj)
+```
+
+## 解构赋值
+
+将数组中的值或对象的属性取出，赋值给其他变量
+
+```javascript
+const [max,min,avg] = [100,60,80]
+console.log(max)
+console.log(min)
+console.log(avg)
+```
+
+基本语法：
+
+1.右侧数组的值将被赋值给左侧的变量
+
+2.变量的顺序对应数组的位置依次进行赋值的操作
+
+js两个特殊情况需要加分号：
+
+1.如果是小括号开头的则需要加分号，例如两个立即执行函数
+
+2.如果是中括号开头的则需要加分号
